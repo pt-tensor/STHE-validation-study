@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" role="img" aria-label="Fig. 5(b) — shell-side pressure drop vs mass-flow (SG-STHX)">
+<rect width="100%" height="100%" fill="white"/>
+<text x="360.0" y="26" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#111">Fig. 5(b) — shell-side pressure drop vs mass-flow (SG-STHX)</text>
+<line x1="72" y1="44" x2="72" y2="384" stroke="#333" stroke-width="1"/>
+<line x1="72" y1="384" x2="692" y2="384" stroke="#333" stroke-width="1"/>
+<text x="60" y="34" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#444">Δp [Pa]</text>
+<text x="382.0" y="428" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#444">ṁ [kg/s]</text>
+<line x1="184.72727272727272" y1="44" x2="184.72727272727272" y2="384" stroke="#eee" stroke-width="1"/>
+<text x="184.72727272727272" y="400" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">0.03</text>
+<line x1="325.6363636363635" y1="44" x2="325.6363636363635" y2="384" stroke="#eee" stroke-width="1"/>
+<text x="325.6363636363635" y="400" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">0.035</text>
+<line x1="466.5454545454544" y1="44" x2="466.5454545454544" y2="384" stroke="#eee" stroke-width="1"/>
+<text x="466.5454545454544" y="400" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">0.04</text>
+<line x1="607.4545454545452" y1="44" x2="607.4545454545452" y2="384" stroke="#eee" stroke-width="1"/>
+<text x="607.4545454545452" y="400" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">0.045</text>
+<line x1="72" y1="384.0" x2="692" y2="384.0" stroke="#eee" stroke-width="1"/>
+<text x="64" y="387.0" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">0.0</text>
+<line x1="72" y1="277.38087276650805" x2="692" y2="277.38087276650805" stroke="#eee" stroke-width="1"/>
+<text x="64" y="280.38087276650805" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">2000</text>
+<line x1="72" y1="170.76174553301615" x2="692" y2="170.76174553301615" stroke="#eee" stroke-width="1"/>
+<text x="64" y="173.76174553301615" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">4000</text>
+<line x1="72" y1="64.14261829952417" x2="692" y2="64.14261829952417" stroke="#eee" stroke-width="1"/>
+<text x="64" y="67.14261829952417" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">6000</text>
+<path d="M100.18,277.38 L241.09,229.40 L382.00,184.09 L522.91,130.78 L663.82,74.80" fill="none" stroke="#111111" stroke-width="1.8"/>
+<rect x="95.18" y="272.38" width="10.0" height="10.0" fill="#111111" stroke="white" stroke-width="1"/>
+<rect x="236.09" y="224.40" width="10.0" height="10.0" fill="#111111" stroke="white" stroke-width="1"/>
+<rect x="377.00" y="179.09" width="10.0" height="10.0" fill="#111111" stroke="white" stroke-width="1"/>
+<rect x="517.91" y="125.78" width="10.0" height="10.0" fill="#111111" stroke="white" stroke-width="1"/>
+<rect x="658.82" y="69.80" width="10.0" height="10.0" fill="#111111" stroke="white" stroke-width="1"/>
+<line x1="606" y1="74" x2="630" y2="74" stroke="#111111" stroke-width="2"/>
+<text x="636" y="77" text-anchor="start" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#222">Experiment (Fig.5)</text>
+<path d="M100.18,382.85 L241.09,382.44 L382.00,381.97 L522.91,381.44 L663.82,380.86" fill="none" stroke="#888888" stroke-width="1.8" stroke-dasharray="5 3"/>
+<line x1="606" y1="90" x2="630" y2="90" stroke="#888888" stroke-width="2"/>
+<text x="636" y="93" text-anchor="start" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#222">Esso rebuild</text>
+<circle cx="382.00" cy="202.92" r="4.2" fill="#2f6fed" stroke="white" stroke-width="1"/>
+<line x1="606" y1="106" x2="630" y2="106" stroke="#2f6fed" stroke-width="2"/>
+<text x="636" y="109" text-anchor="start" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#222">OpenFOAM</text>
+</svg>

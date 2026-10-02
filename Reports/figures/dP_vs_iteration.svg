@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420">
+<rect width="100%" height="100%" fill="white"/>
+<text x="360.0" y="24" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#111">Shell Δp vs iteration — m037 (m=0.037 kg/s)</text>
+<line x1="72" y1="40" x2="72" y2="368" stroke="#333" stroke-width="1"/>
+<line x1="72" y1="368" x2="696" y2="368" stroke="#333" stroke-width="1"/>
+<text x="62" y="32" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#444">Δp [Pa]</text>
+<text x="384.0" y="410" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#444">Iteration</text>
+<line x1="141.33333333333331" y1="40" x2="141.33333333333331" y2="368" stroke="#e8e8e8" stroke-width="1"/>
+<text x="141.33333333333331" y="384" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">2200</text>
+<line x1="280.0" y1="40" x2="280.0" y2="368" stroke="#e8e8e8" stroke-width="1"/>
+<text x="280.0" y="384" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">2400</text>
+<line x1="418.6666666666667" y1="40" x2="418.6666666666667" y2="368" stroke="#e8e8e8" stroke-width="1"/>
+<text x="418.6666666666667" y="384" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">2600</text>
+<line x1="557.3333333333333" y1="40" x2="557.3333333333333" y2="368" stroke="#e8e8e8" stroke-width="1"/>
+<text x="557.3333333333333" y="384" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">2800</text>
+<line x1="696.0" y1="40" x2="696.0" y2="368" stroke="#e8e8e8" stroke-width="1"/>
+<text x="696.0" y="384" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">3000</text>
+<line x1="72" y1="368.0" x2="696" y2="368.0" stroke="#e8e8e8" stroke-width="1"/>
+<text x="64" y="371.0" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">0</text>
+<line x1="72" y1="287.01234567901236" x2="696" y2="287.01234567901236" stroke="#e8e8e8" stroke-width="1"/>
+<text x="64" y="290.01234567901236" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">1000</text>
+<line x1="72" y1="206.0246913580247" x2="696" y2="206.0246913580247" stroke="#e8e8e8" stroke-width="1"/>
+<text x="64" y="209.0246913580247" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">2000</text>
+<line x1="72" y1="125.03703703703705" x2="696" y2="125.03703703703705" stroke="#e8e8e8" stroke-width="1"/>
+<text x="64" y="128.03703703703707" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">3000</text>
+<line x1="72" y1="44.0493827160494" x2="696" y2="44.0493827160494" stroke="#e8e8e8" stroke-width="1"/>
+<text x="64" y="47.0493827160494" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555">4000</text>
+<line x1="72" y1="64.29629629629629" x2="696" y2="64.29629629629629" stroke="#888" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="692" y="60.29629629629629" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#666">Δp_exp=3750 Pa</text>
+<path d="M72.00,93.18 L141.33,92.92 L210.67,93.22 L280.00,92.88 L349.33,93.13 L418.67,93.11 L488.00,93.00 L557.33,93.10 L626.67,93.05 L696.00,92.90" fill="none" stroke="#2a7a4b" stroke-width="1.6"/>
+<circle cx="72.00" cy="93.18" r="3" fill="#2a7a4b"/>
+<circle cx="141.33" cy="92.92" r="3" fill="#2a7a4b"/>
+<circle cx="210.67" cy="93.22" r="3" fill="#2a7a4b"/>
+<circle cx="280.00" cy="92.88" r="3" fill="#2a7a4b"/>
+<circle cx="349.33" cy="93.13" r="3" fill="#2a7a4b"/>
+<circle cx="418.67" cy="93.11" r="3" fill="#2a7a4b"/>
+<circle cx="488.00" cy="93.00" r="3" fill="#2a7a4b"/>
+<circle cx="557.33" cy="93.10" r="3" fill="#2a7a4b"/>
+<circle cx="626.67" cy="93.05" r="3" fill="#2a7a4b"/>
+<circle cx="696.00" cy="92.90" r="3" fill="#2a7a4b"/>
+<line x1="82" y1="48" x2="100" y2="48" stroke="#2a7a4b" stroke-width="2"/>
+<text x="106" y="51" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#222">Δp_shell (3396.8 Pa @ iter=3000)</text>
+</svg>

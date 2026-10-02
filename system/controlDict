@@ -1,0 +1,82 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2512                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+FoamFile
+{
+    version         2;
+    format          ascii;
+    class           dictionary;
+    object          controlDict;
+}
+
+application     chtMultiRegionSimpleFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         3000;
+
+deltaT          1;
+
+writeControl    timeStep;
+
+writeInterval   100;
+
+purgeWrite      10;
+
+writeFormat     ascii;
+
+writePrecision  7;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+functions
+{
+    Tout_outlet_hot
+    {
+        type            surfaceFieldValue;
+        libs            ( fieldFunctionObjects );
+        region          hot_fluid;
+        writeControl    timeStep;
+        writeInterval   1;
+        writeFields     false;
+        log             true;
+        regionType      patch;
+        name            outlet_hot;
+        operation       weightedAverage;
+        weightField     phi;
+        fields          ( T );
+    }
+    Tout_outlet_cold
+    {
+        type            surfaceFieldValue;
+        libs            ( fieldFunctionObjects );
+        region          cold_fluid;
+        writeControl    timeStep;
+        writeInterval   1;
+        writeFields     false;
+        log             true;
+        regionType      patch;
+        name            outlet_cold;
+        operation       weightedAverage;
+        weightField     phi;
+        fields          ( T );
+    }
+}
+
+
+// ************************************************************************* //

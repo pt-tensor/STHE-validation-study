@@ -1,0 +1,2 @@
+m_dot_kg_s,Q_W,dP_shell_Pa,Tho_C,Tco_C,note
+0.037,2304.7,3396.8,83.425,39.612,m037 FO t=3000; Δp@3000; Q=m*Cp*(Tin_h-Tout_h); Qc=2284.2W

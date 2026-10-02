@@ -1,0 +1,53 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2406                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+thermoType
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState rhoConst;
+    specie          specie;
+    energy          sensibleEnthalpy;
+}
+
+// ANSYS Fluent database "water-liquid" defaults (~20 °C), constant props.
+// Paper: water both sides from Fluent DB; same set used for hot & cold.
+mixture
+{
+    specie
+    {
+        molWeight       18;
+    }
+    equationOfState
+    {
+        rho             998.2;
+    }
+    thermodynamics
+    {
+        Cp              4182;
+        Hf              0;
+    }
+    transport
+    {
+        mu              1.003e-3;
+        Pr              6.99;          // = mu*Cp/k with Fluent k=0.6
+    }
+}
+
+
+// ************************************************************************* //

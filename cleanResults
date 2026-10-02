@@ -1,0 +1,73 @@
+#!/bin/sh
+cd "${0%/*}" || exit
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions
+#------------------------------------------------------------------------------
+# Wipe solver results only (keep structured mesh, 0.orig, dicts).
+# Rebuild multi-region 0/<region>/ the same way as buildMesh:
+#   restore0Dir → splitMeshRegions → strip solid fluid fields → changeDictionary
+#
+# Just run:  ./cleanResults
+
+set -e
+
+echo "==> remove processors / post / VTK"
+find . -name '.DS_Store' -delete 2>/dev/null || true
+find . -name '._*' -delete 2>/dev/null || true
+rm -rf processor* postProcessing VTK
+# Finder may recreate .DS_Store mid-delete on macOS mounts
+rm -rf processor* 2>/dev/null || true
+
+echo "==> remove time folders (keep 0.orig)"
+for d in [1-9]* 0.[0-9]* 0; do
+    [ -e "$d" ] || continue
+    case "$d" in
+        0.orig) ;;
+        *) rm -rf "$d" ;;
+    esac
+done
+
+echo "==> remove associated logs (keep log.blockMesh — mesh retained)"
+# Explicit find: shell globs like log.decomposePar.* leave stale files when
+# unmatched under some shells, and runApplication then skips re-decompose.
+find . -maxdepth 1 -type f -name 'log.*' ! -name 'log.blockMesh' -delete 2>/dev/null || true
+
+if [ ! -f constant/polyMesh/points ] || [ ! -f constant/cellToRegion ]
+then
+    echo "Error: background mesh / cellToRegion missing — run ./buildMesh first."
+    exit 1
+fi
+
+echo "==> restore0Dir + splitMeshRegions (creates 0/<region>/ with real patch names)"
+restore0Dir
+# Region polyMeshes already exist; -overwrite refreshes them + maps 0 → 0/<region>
+runApplication splitMeshRegions -cellZonesOnly -overwrite
+
+rm -rf constant/domain* 0/domain* system/domain* 2>/dev/null || true
+
+for region in hot_fluid cold_fluid solid
+do
+    if [ ! -f "constant/$region/polyMesh/points" ] || [ ! -d "0/$region" ]
+    then
+        echo "Error: missing region $region after splitMeshRegions."
+        exit 1
+    fi
+done
+
+# Remove fluid fields from solid; drop stale cellToRegion / unused epsilon
+for f in nut alphat epsilon k omega U p_rgh
+do
+    rm -f "0/solid/$f"
+done
+for region in hot_fluid cold_fluid
+do
+    rm -f "0/$region/epsilon" "0/$region/cellToRegion"
+done
+rm -f "0/solid/cellToRegion"
+
+for region in $(foamListRegions)
+do
+    runApplication -s "$region" changeDictionary -region "$region"
+done
+
+echo "Results cleaned. Mesh kept. Ready for ./Run"
+#------------------------------------------------------------------------------

@@ -1,0 +1,11 @@
+iteration,dP_shell_Pa,note
+2100,3393.418000,p_rgh(inlet_cold)-p_rgh(outlet_cold)
+2200,3396.508021,p_rgh(inlet_cold)-p_rgh(outlet_cold)
+2300,3392.816385,p_rgh(inlet_cold)-p_rgh(outlet_cold)
+2400,3397.066740,p_rgh(inlet_cold)-p_rgh(outlet_cold)
+2500,3393.986740,p_rgh(inlet_cold)-p_rgh(outlet_cold)
+2600,3394.196187,p_rgh(inlet_cold)-p_rgh(outlet_cold)
+2700,3395.570948,p_rgh(inlet_cold)-p_rgh(outlet_cold)
+2800,3394.300229,p_rgh(inlet_cold)-p_rgh(outlet_cold)
+2900,3394.977021,p_rgh(inlet_cold)-p_rgh(outlet_cold)
+3000,3396.825531,p_rgh(inlet_cold)-p_rgh(outlet_cold)

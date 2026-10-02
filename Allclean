@@ -1,0 +1,26 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/CleanFunctions      # Tutorial clean functions
+#------------------------------------------------------------------------------
+
+# macOS Finder often drops .DS_Store into processor*/ while cleaning; remove
+# hidden junk first so cleanCase0 can delete the directories.
+find . -name '.DS_Store' -delete 2>/dev/null || true
+find . -name '._*' -delete 2>/dev/null || true
+
+cleanCase0
+
+# Belt-and-suspenders: force-remove any leftover parallel dirs
+rm -rf processor* 2>/dev/null || true
+
+rm -rf constant/extendedFeatureEdgeMesh
+
+rm -rf VTK
+rm -rf constant/cellToRegion
+rm -rf constant/*/polyMesh  # region meshes
+
+# All foam/run logs (mesh + regions + solver). Stale log.decomposePar.*
+# would make ./Run skip decompose even after a remesh.
+find . -maxdepth 1 -type f -name 'log.*' -delete 2>/dev/null || true
+
+#------------------------------------------------------------------------------

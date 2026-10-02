@@ -1,0 +1,49 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+
+# Structured multi-block STHE (no snappy).
+# Regenerate system/blockMeshDict on the host if geometry params change:
+#   python3 scripts/makeStructuredBlockMesh.py
+
+set -e
+
+runApplication -o blockMesh || {
+    echo "Error: blockMesh failed. See log.blockMesh."
+    exit 1
+}
+
+restore0Dir
+
+runApplication splitMeshRegions -cellZonesOnly -overwrite
+
+for region in hot_fluid cold_fluid solid
+do
+    if [ ! -f "constant/$region/polyMesh/points" ]
+    then
+        echo "Error: missing constant/$region/polyMesh"
+        echo "See log.blockMesh and log.splitMeshRegions"
+        exit 1
+    fi
+done
+
+# Remove fluid fields from solid; drop stale cellToRegion / unused epsilon (k–ω SST)
+for f in nut alphat epsilon k omega U p_rgh
+do
+    rm -f "0/solid/$f"
+done
+for region in hot_fluid cold_fluid
+do
+    rm -f "0/$region/epsilon" "0/$region/cellToRegion"
+done
+rm -f "0/solid/cellToRegion"
+
+for region in $(foamListRegions)
+do
+    runApplication -s "$region" changeDictionary -region "$region"
+done
+
+echo "Regions: hot_fluid, cold_fluid, solid (structured blockMesh)."
+
+#------------------------------------------------------------------------------

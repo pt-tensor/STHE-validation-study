@@ -1,0 +1,30 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+
+# reconstructPar is serial; parallelize independent region/time jobs.
+set -e
+workers=8
+regions=$(foamListRegions)
+times=$(foamListTimes -processor)
+
+if [ -z "$regions" ] || [ -z "$times" ]; then
+    echo "Error: no regions or processor times found."
+    exit 1
+fi
+
+for region in $regions
+do
+    for time in $times
+    do
+        printf '%s %s\n' "$region" "$time"
+    done
+done | xargs -P "$workers" -n 2 sh -c '
+    . "${WM_PROJECT_DIR:?}/bin/tools/RunFunctions"
+    region=$1
+    time=$2
+    runApplication -s "${region}_${time}" reconstructPar -region "$region" -time "$time"
+' sh
+
+#------------------------------------------------------------------------------

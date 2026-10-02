@@ -1,0 +1,6 @@
+m_dot_kg_s,Q_exp_W,Q_OpenFOAM_W,err_Q_vs_exp_pct,Q_Kern_rebuild_W,err_Q_vs_Kern_pct,dP_exp_Pa,dP_OpenFOAM_Pa,err_dP_vs_exp_pct,dP_Esso_rebuild_Pa,err_dP_vs_Esso_pct,Tho_OpenFOAM_C,Tco_OpenFOAM_C
+0.027,2230,,,1021.5,,2000,,,21.6,,,
+0.032,2300,,,1138.2,,2900,,,29.3,,,
+0.037,2400,2304.7,-4.0,1247.3,84.8,3750,3396.8,-9.4,38.2,8801.0,83.42,39.61
+0.042,2520,,,1350.1,,4750,,,48.0,,,
+0.047,2650,,,1447.5,,5800,,,58.8,,,

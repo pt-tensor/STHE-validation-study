@@ -1,0 +1,227 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2406                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      changeDictionaryDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+boundary
+{
+    inlet_cold
+    {
+        type            patch;
+    }
+    outlet_cold
+    {
+        type            patch;
+    }
+}
+
+U
+{
+    // Shell nozzles ±Y; cold inlet near +Z (hot outlet), outlet near z≈0 — counterflow
+    // ṁ = 0.047 kg/s (Zahid Fig. 5 / GIT validation point)
+    internalField   uniform (0 0.3 0);
+
+    boundaryField
+    {
+        ".*"
+        {
+            type            fixedValue;
+            value           uniform (0 0 0);
+        }
+        "procBoundary.*"
+        {
+            type            processor;
+        }
+        inlet_cold
+        {
+            type            flowRateInletVelocity;
+            massFlowRate    0.037;
+            rhoInlet        997;
+            value           uniform (0 0.3 0);
+        }
+        outlet_cold
+        {
+            type            pressureInletOutletVelocity;
+            value           uniform (0 -0.3 0);
+        }
+    }
+}
+
+T
+{
+    // Fig. 6 legend min (assumed Tin_cold): 298 K
+    internalField   uniform 298;
+
+    boundaryField
+    {
+        ".*"
+        {
+            type            zeroGradient;
+        }
+        "procBoundary.*"
+        {
+            type            processor;
+        }
+        inlet_cold
+        {
+            type            fixedValue;
+            value           uniform 298;
+        }
+        outlet_cold
+        {
+            type            inletOutlet;
+            inletValue      uniform 298;
+            value           uniform 298;
+        }
+        "cold_fluid_to_.*"
+        {
+            type            compressible::turbulentTemperatureRadCoupledMixed;
+            Tnbr            T;
+            kappaMethod     fluidThermo;
+            value           uniform 298;
+        }
+    }
+}
+
+omega
+{
+    // Former ε=0.1, k=0.001 → ω = ε/(Cμ k) ≈ 1111 (Cμ=0.09)
+    internalField   uniform 1111;
+
+    boundaryField
+    {
+        ".*"
+        {
+            type            omegaWallFunction;
+            value           uniform 1111;
+        }
+        "procBoundary.*"
+        {
+            type            processor;
+        }
+        inlet_cold
+        {
+            type            fixedValue;
+            value           uniform 1111;
+        }
+        outlet_cold
+        {
+            type            inletOutlet;
+            inletValue      uniform 1111;
+            value           uniform 1111;
+        }
+    }
+}
+
+k
+{
+    internalField   uniform 0.001;
+
+    boundaryField
+    {
+        ".*"
+        {
+            type            kqRWallFunction;
+            value           uniform 0.001;
+        }
+        "procBoundary.*"
+        {
+            type            processor;
+        }
+        inlet_cold
+        {
+            type            fixedValue;
+            value           uniform 0.001;
+        }
+        outlet_cold
+        {
+            type            inletOutlet;
+            inletValue      uniform 0.001;
+            value           uniform 0.001;
+        }
+    }
+}
+
+nut
+{
+    internalField   uniform 0;
+
+    boundaryField
+    {
+        ".*"
+        {
+            type            nutkWallFunction;
+            value           uniform 0;
+        }
+        "procBoundary.*"
+        {
+            type            processor;
+        }
+        inlet_cold
+        {
+            type            calculated;
+            value           uniform 0;
+        }
+        outlet_cold
+        {
+            type            calculated;
+            value           uniform 0;
+        }
+    }
+}
+
+p_rgh
+{
+    // Paper: pressure-outlet p = 0 (gauge)
+    internalField   uniform 0;
+
+    boundaryField
+    {
+        ".*"
+        {
+            type            fixedFluxPressure;
+            value           uniform 0;
+        }
+        "procBoundary.*"
+        {
+            type            processor;
+        }
+        outlet_cold
+        {
+            type            fixedValue;
+            value           uniform 0;
+        }
+    }
+}
+
+p
+{
+    internalField   uniform 0;
+
+    boundaryField
+    {
+        ".*"
+        {
+            type            calculated;
+            value           uniform 0;
+        }
+        "procBoundary.*"
+        {
+            type            processor;
+        }
+    }
+}
+
+
+// ************************************************************************* //
